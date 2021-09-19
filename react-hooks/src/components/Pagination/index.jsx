@@ -35,7 +35,7 @@ function Pagination({ pagination, onPageChange }) {
         </button>
       </div>
       <div>
-        On page: {_page}, total pages: {lastPage}
+        On page: {_page}/{lastPage}
       </div>
     </div>
   );
