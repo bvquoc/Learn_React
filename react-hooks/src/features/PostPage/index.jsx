@@ -1,8 +1,8 @@
-import React from "react";
-import { useEffect, useState } from "react";
 import queryString from "query-string";
-import Posts from "../../components/Posts";
+import React, { useEffect, useState } from "react";
 import Pagination from "../../components/Pagination";
+import PostFiltesForm from "../../components/PostFiltersForm";
+import Posts from "../../components/Posts";
 
 const API_URL = "http://js-post-api.herokuapp.com/api";
 
@@ -30,9 +30,15 @@ function PostPage() {
       _page: newPage,
     });
   }
+  function handleFiltersChange(formValues) {
+    const newFilters = { ...filters, ...formValues, _page: 1 };
+    console.log(newFilters);
+    setFilters(newFilters);
+  }
   return (
     <>
       <h2>Post list</h2>
+      <PostFiltesForm onSubmit={handleFiltersChange} />
       <Posts posts={postList} />
       <Pagination pagination={pagination} onPageChange={handleOnPageChange} />
     </>
